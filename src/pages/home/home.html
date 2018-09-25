@@ -1,14 +1,48 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Google Map
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <button ion-button (click)="loadMap()">Load</button>
+  <button ion-button (click)="startgeolocation()">Start</button>
+  <button ion-button (click)="stopgeolocation()">Stop</button>
+
+  <div #map id="map" style="height: 200px"></div>
+
+  <p>Bearing</p>
+  <ion-range 
+  	style="margin: 0px; padding: 0px" 
+  	min="1" 
+  	max="360" 
+  	step="1" 
+  	pin="true" 
+  	[(ngModel)]="bearingValue" 
+  	(ionChange)="setBearing(bearingValue)" >
+  </ion-range>
+
+  <p>Tilt</p>
+  <ion-range 
+  	style="margin: 0px; padding: 0px" 
+  	min="1" 
+  	max="10" 
+  	step="1" 
+  	pin="true"
+  	[(ngModel)]="tiltValue" 
+  	(ionChange)="setTilt(tiltValue)">
+  </ion-range>
+
+  <p>Zoom</p>
+  <ion-range 
+  	style="margin: 0px; padding: 0px" 
+  	min="1" 
+  	max="100" 
+  	step="1" 
+  	pin="true"
+  	[(ngModel)]="zoomValue" 
+  	(ionChange)="setZoom(zoomValue)">
+  </ion-range>
 </ion-content>
